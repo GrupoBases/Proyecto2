@@ -1,0 +1,96 @@
+Funciones:
+-Todas las tablas deben contar con los campos de auditoría y deben ser
+registrados por medio de triggers.
+
+-El sistema debe manejar un nivel de seguridad con registro de usuario y
+contraseña.
+
+-Registro de mascotas encontradas o perdidas
+
+-El sistema debe permitir al usuario hacer la publicación en su usuario
+de Facebook y Twitter de la mascota encontrada o perdida.
+
+-Edición: El sistema permite editar y actualizar todos los datos.
+
+-El sistema debe permitir consultar por cualquier campo de registro o
+combinación de campos. Por ejemplo:Por lugar, Por chip, Por estado, Por raza, Otros.
+
+-La consulta de mascotas en cualquiera de sus estados debe mostrarse
+  ordenado por fecha (desde el más reciente hasta el más antiguo).
+
+-El sistema debe permitir registrar los datos de las personas que
+quieran ser casas cuna con condiciones para ser casa cuna como por
+ejemplo el tipo de mascota, el tamaño, si requiere donación para
+alimentos, entre otros.
+
+-El sistema debe permitir que una persona que reporta un perro
+encontrado pueda contactar a una de las personas que quieren ser
+casas cuna.
+
+-El sistema debe permitir registrar adopciones de mascotas con los
+datos del adoptante: Debe permitir registrar fotos de la persona adoptante y la
+mascota, Debe permitir registrar fotos del nuevo dueño mostrando la
+nueva vida de la mascota, El sistema debe permitir al usuario hacer la publicación en su
+usuario de Facebook y Twitter de las fotos de la adopción.
+
+-La persona que da una mascota en adopción puede poner
+calificaciones (estrellas del 1 al 5) y notas sobre los nuevos dueños.
+
+-El sistema debe permitir reportar a un adoptante o a una persona en
+una lista negra. El sistema permite generar un reporte de lista negra de adoptantes o
+personas. Al presionar click sobre una persona se debe mostrar la
+calificación y sus notas. 
+
+-Donaciones: El sistema debe permitir donar una recompensa en caso que la
+persona que encuentra una mascota perdida no quiera recibirla. La
+donación se haría a la asociación de rescate animal que la persona
+indique. El sistema debe identificar que la donación es por donar una
+recompensa. Debe existir una consulta que muestre los datos de las donaciones con
+filtros de los datos de las personas que hacen la donación y a cuál
+asociación la donan así como el monto. Debe existir una consulta que muestre el monto total de las
+donaciones agrupado por asociación beneficiada. El sistema debe permitir la donación voluntaria de cualquier usuario
+del sistema hacia una asociación. Estas donaciones deben salir en las
+consultas (extra +1). El sistema debe permitir hacer donaciones por porcentaje a n
+asociaciones y estas donaciones deben salir en las consultas(extra +1).Debe existir 
+un reporte por rango de fecha de los montos de
+donaciones, el donador y un total del monto donado en ese rango de fechas.
+
+-Registro de asociaciones de empresas que trabajan en pro del bienestar
+animal a efectos de reportarle las donaciones.
+
+-El sistema debe ejecutar un proceso cada 4 horas (parametrizable) que
+haga un match entre las mascotas reportadas como encontradas y las
+reportadas como perdidas. El match debe ser según las características
+de las mascotas y debe enviar correos electrónicos a las personas
+involucradas. En un único correo debe enviar los datos de los matchs
+incluyendo las fotos. Este proceso debe programarse como un job de
+bases de datos.
+
+-El sistema debe generar un reporte de los match a demanda.
+
+-Todas las tablas deben contar con los campos de auditoría y deben ser
+registrados por medio de triggers
+
+-El sistema debe manejar una bitácora con las modificaciones a campos
+sensibles dentro de la base de datos como por ejemplo el monto de las
+donaciones, entre otros que usted considere necesario controlar
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
