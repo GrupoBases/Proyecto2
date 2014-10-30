@@ -1,0 +1,17 @@
+CREATE TABLESPACE datos_Proyecto2
+DATAFILE 'C:\app\FLORES\oradata\proyecto\datos_Proyecto2.dbf'
+SIZE 10M
+REUSE
+AUTOEXTEND ON
+NEXT 512
+MAXSIZE 200M;
+--
+-- PE: INDEX
+--
+CREATE TABLESPACE indice_Proyecto2
+DATAFILE 'C:\app\FLORES\oradata\proyecto\indice_Proyecto2.dbf'
+SIZE 10M
+REUSE
+AUTOEXTEND ON
+NEXT 512k
+MAXSIZE 200M;

@@ -1,0 +1,6 @@
+CREATE USER Proyecto2
+IDENTIFIED BY Proyecto2
+DEFAULT TABLESPACE datos_Proyecto2
+QUOTA 10M ON datos_Proyecto2
+TEMPORARY TABLESPACE temp
+QUOTA 5M ON system;
