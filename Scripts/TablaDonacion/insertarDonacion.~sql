@@ -1,0 +1,15 @@
+create or replace function insertarDonacion(pidUsuario number,asociacion varchar2,pMonto number)
+return number
+as
+retornoId NUMBER(10);
+idAsociacion number(10);
+
+
+begin    
+    idAsociacion := getIdAsociacion(asociacion);
+    retornoId := secuencia_id_donacion.nextVal;
+    insert into tbDonacion(id_Donacion,Id_Usuariod,Id_Asociacion,Monto,Fecha)
+    values (retornoId,pidUsuario,idAsociacion,pMonto,sysdate);
+    commit;
+    return retornoId; 
+end;

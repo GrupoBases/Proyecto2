@@ -1,0 +1,13 @@
+create or replace function insertarUsuario(pNombreUsuario varchar2,pContraseña varchar2,pTipoUsuario number)
+return number
+as
+retornoId NUMBER(10);
+
+begin
+  retornoId := secuencia_id_usuario.nextVal;
+  insert into Tbusuario(id_usuario,Nombreusuario,Contraseña,Id_Tipousuario)
+         values (retornoId,pNombreUsuario,pContraseña,pTipoUsuario); 
+  commit; 
+  return retornoId; 
+
+end;
