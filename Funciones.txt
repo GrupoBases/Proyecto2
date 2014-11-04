@@ -1,27 +1,27 @@
 Funciones:
 -Todas las tablas deben contar con los campos de auditoría y deben ser
-registrados por medio de triggers.
+registrados por medio de triggers. ya 
 
 -El sistema debe manejar un nivel de seguridad con registro de usuario y
-contraseña.
+contraseña. 
 
--Registro de mascotas encontradas o perdidas
+-Registro de mascotas encontradas o perdidas, ya
 
 -El sistema debe permitir al usuario hacer la publicación en su usuario
-de Facebook y Twitter de la mascota encontrada o perdida.
+de Facebook y Twitter de la mascota encontrada o perdida, ya
 
--Edición: El sistema permite editar y actualizar todos los datos.
+-Edición: El sistema permite editar y actualizar todos los datos, ya 
 
 -El sistema debe permitir consultar por cualquier campo de registro o
 combinación de campos. Por ejemplo:Por lugar, Por chip, Por estado, Por raza, Otros.
 
 -La consulta de mascotas en cualquiera de sus estados debe mostrarse
-  ordenado por fecha (desde el más reciente hasta el más antiguo).
+  ordenado por fecha (desde el más reciente hasta el más antiguo), ya 
 
 -El sistema debe permitir registrar los datos de las personas que
 quieran ser casas cuna con condiciones para ser casa cuna como por
 ejemplo el tipo de mascota, el tamaño, si requiere donación para
-alimentos, entre otros.
+alimentos, entre otros, ya 
 
 -El sistema debe permitir que una persona que reporta un perro
 encontrado pueda contactar a una de las personas que quieren ser
@@ -31,15 +31,15 @@ casas cuna.
 datos del adoptante: Debe permitir registrar fotos de la persona adoptante y la
 mascota, Debe permitir registrar fotos del nuevo dueño mostrando la
 nueva vida de la mascota, El sistema debe permitir al usuario hacer la publicación en su
-usuario de Facebook y Twitter de las fotos de la adopción.
+usuario de Facebook y Twitter de las fotos de la adopción, ya
 
 -La persona que da una mascota en adopción puede poner
-calificaciones (estrellas del 1 al 5) y notas sobre los nuevos dueños.
+calificaciones (estrellas del 1 al 5) y notas sobre los nuevos dueños,ya
 
 -El sistema debe permitir reportar a un adoptante o a una persona en
 una lista negra. El sistema permite generar un reporte de lista negra de adoptantes o
 personas. Al presionar click sobre una persona se debe mostrar la
-calificación y sus notas. 
+calificación y sus notas, ya
 
 -Donaciones: El sistema debe permitir donar una recompensa en caso que la
 persona que encuentra una mascota perdida no quiera recibirla. La
@@ -56,7 +56,7 @@ un reporte por rango de fecha de los montos de
 donaciones, el donador y un total del monto donado en ese rango de fechas.
 
 -Registro de asociaciones de empresas que trabajan en pro del bienestar
-animal a efectos de reportarle las donaciones.
+animal a efectos de reportarle las donaciones, ya
 
 -El sistema debe ejecutar un proceso cada 4 horas (parametrizable) que
 haga un match entre las mascotas reportadas como encontradas y las
@@ -66,14 +66,14 @@ involucradas. En un único correo debe enviar los datos de los matchs
 incluyendo las fotos. Este proceso debe programarse como un job de
 bases de datos.
 
--El sistema debe generar un reporte de los match a demanda.
+-El sistema debe generar un reporte de los match a demanda, ya 
 
 -Todas las tablas deben contar con los campos de auditoría y deben ser
-registrados por medio de triggers
+registrados por medio de triggers, ya
 
 -El sistema debe manejar una bitácora con las modificaciones a campos
 sensibles dentro de la base de datos como por ejemplo el monto de las
-donaciones, entre otros que usted considere necesario controlar
+donaciones, entre otros que usted considere necesario controlar, ya
 
 
 
