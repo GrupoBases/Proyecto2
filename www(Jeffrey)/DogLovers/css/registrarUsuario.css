@@ -29,11 +29,16 @@ body {
 
 
 #logo{
+    background: #3f9db8;
     top: 100px;
     height: 100%;
     width: 100%;
 	padding: -100px 0px 0px 0px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.5);
 }
+
 
 .estructuraForm{
 	width: 100%;
