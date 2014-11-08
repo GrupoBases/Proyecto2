@@ -7,7 +7,7 @@
         </title>
         
         <link rel="shortcut icon" type="image/x-icon" href="graficos/favicon.ico">
-        <link rel="stylesheet" type="text/css" href="css/registrarMascotaPerdida.css" />
+        <link rel="stylesheet" type="text/css" href="css/registrarMascotaEncontrada.css" />
     </head>
        
     <body>
@@ -19,19 +19,17 @@
                     <div class="contenedor">         
                         <label for="campo obligatorio"> *Campo Obligatorio:</label>
                         
-                        <h1 class="tagInfoMascota"> Información de la mascota <span class="triangulo"</span></h1>
-                        
                         <label for="Tipo de Mascota"> * Tipo de mascota:</label>
                         <select id="tipoMascota">
                             <option value=""> --elejir tipo mascota-- </option>
                         </select>
                         
                         <label for="Raza"> * Raza:</label>
-                            <select id="raza">
+                        <select id="raza">
                             <option value=""> --elejir una raza-- </option>
                         </select>
 
-                        <label for="nombreMascota"> * Nombre de la mascota:</label>
+                        <label for="nombreMascota"> Nombre de la mascota:</label>
                         <input type="text" id="nombreMascota" placeholder="Nombre Mascota">
 
                         <label for="Chip"> Chip de identificación:</label>
@@ -44,9 +42,8 @@
                         <input type="text" id="notas" placeholder="Notas">
                         
                         
-                        <h1 class="tagMasInfo"> Más información <span class="triangulo"</span></h1>
-                        
-                        <label for="lugarPerdido"> * Lugar donde fué perdido (a):</label>
+                        <label for=""> ----------------------------------------------------------------------------------</label>
+                        <label for="lugarPerdido"> * Lugar donde fué encontrado (a):</label>
                         
                         <label for="pais"> País:</label>
                             <select id="pais">
@@ -71,8 +68,8 @@
                         <label for="descripciones"> Descripciones:</label>
                         <textarea id="descripciones" placeholder="Descripciones"></textarea>
                         
-                        <label for="FechaExtravio"> Fecha de Extravío:</label>
-                        <input type="date" id="fechaExtravío" placeholder="Fecha de extravío">   
+                        <label for="FechaExtravio"> Día en que fué Encontrado (a):</label>
+                        <input type="date" id="fechaExtravío" placeholder="Fecha de encontrado">   
                         
 
                         <input type="submit" value="Registrar">

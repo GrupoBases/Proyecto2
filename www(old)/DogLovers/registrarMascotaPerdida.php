@@ -19,8 +19,6 @@
                     <div class="contenedor">         
                         <label for="campo obligatorio"> *Campo Obligatorio:</label>
                         
-                        <h1 class="tagInfoMascota"> Información de la mascota <span class="triangulo"</span></h1>
-                        
                         <label for="Tipo de Mascota"> * Tipo de mascota:</label>
                         <select id="tipoMascota">
                             <option value=""> --elejir tipo mascota-- </option>
@@ -44,8 +42,7 @@
                         <input type="text" id="notas" placeholder="Notas">
                         
                         
-                        <h1 class="tagMasInfo"> Más información <span class="triangulo"</span></h1>
-                        
+                        <label for=""> ----------------------------------------------------------------------------------</label>
                         <label for="lugarPerdido"> * Lugar donde fué perdido (a):</label>
                         
                         <label for="pais"> País:</label>
