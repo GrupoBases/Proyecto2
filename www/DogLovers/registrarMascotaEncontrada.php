@@ -13,7 +13,7 @@
         <link rel="stylesheet" type="text/css" href="css/fonts.css" />
         
         <script src="js/jquery-2.1.1.js"></script>
-        <script src="js/jquery.select.js"></script>
+        <script src="jquery.select.js"></script>
     </head>
        
     <body>
@@ -36,37 +36,23 @@
         $conn=$conexion->conectar();
          
     
-        $user = $pass = $correo = $telefono = $nombre = $apellido1 = $apellido2 = $fecha = $pais = $provincia = $canton = $distrito =                   $direccion =""; //var datos
-        $userError=$passError=$validacionError=$correoError=$telefonoError=$nombreError=$apellido1Error=$apellido2Error=$fechaError=                        $paisError =$provinciaError = $cantonError = $distritoError= $direccionError =""; //var errores
+        $tipoMascota=$raza=$nombreMascota=$chip=$color=$notas=$pais=$provincia=$canton=$distrito=$direccion="";// var datos   
 
+        $tipoMascotaError=$razaError=$colorError=$paisError=$provinciaError=$cantonError=$distritoError=$validacionError="";// var                       errores
+        
 
         if ($_SERVER["REQUEST_METHOD"] == "POST" and ($_POST['register'])) { //Si estamos recibiendo datos nuevos verificarlos
-                    if(empty($_POST["nombreUsuario"]) or empty($_POST["contraseña"]) or empty($_POST["correo"]) or empty($_POST["teléfono"]) 
-                      or empty($_POST["nombre"]) or empty($_POST["apellido1"]) or empty($_POST["apellido2"])
-                      or empty($_POST["pais"]) or empty($_POST["provincia"]) or empty($_POST["canton"]) or empty($_POST["distrito"]) ) {
-                       
-                        if(empty($_POST["nombreUsuario"])){
-                            $userError = "*Nombre de Usuario requerido";  //si el username no se encuentra mostrar error
-                        }
-                        if (empty($_POST["contraseña"])) {
-                            $passError = "*Contraseña requerida"; //si la pass no se encuentra mostrar error
-                        }
-                        if (empty($_POST["correo"])) {
-                            $correoError = "*Correo requerido"; //si la pass no se encuentra mostrar error
-                        }
-                        if (empty($_POST["teléfono"])) {
-                            $telefonoError = "*Teléfono requerido"; //si la pass no se encuentra mostrar error
-                        }
-                        if (empty($_POST["nombre"])) {
-                            $nombreError = "*Nombre requerido"; //si la pass no se encuentra mostrar error
-                        }
-                        if (empty($_POST["apellido1"])) {
-                            $apellido1Error = "*Apellido requerido"; //si la pass no se encuentra mostrar error
-                        }
-                        if (empty($_POST["apellido2"])) {
-                            $apellido2Error = "*Apellido requerido"; //si la pass no se encuentra mostrar error
-                        }
+                    if(empty($_POST["tipoMascota"]) or empty($_POST["raza"]) or empty($_POST["color"]) or  empty($_POST["pais"]) or                                     empty($_POST["provincia"]) or empty($_POST["canton"]) or empty($_POST["distrito"])) {
                         
+                        if(empty($_POST["tipoMascota"])){
+                            $tipoMascotaError = "*Tipo de mascota requerido";  //si el username no se encuentra mostrar error
+                        }
+                        if (empty($_POST["raza"])) {
+                            $razaError = "*Raza de mascota requerida"; //si la pass no se encuentra mostrar error
+                        }
+                        if (empty($_POST["color"])) {
+                            $colorError = "*Color de mascota requerido"; //si la pass no se encuentra mostrar error
+                        }            
                         if (empty($_POST["pais"])) {
                             $paisError = "Pais requerido"; //si la pass no se encuentra mostrar error
                         }
@@ -79,25 +65,27 @@
                         if (empty($_POST["distrito"])) {
                             $distritoError = "*Distrito requerido"; //si la pass no se encuentra mostrar error
                         }
-                        
 
+                        
+                    $tipoMascota=$raza=$nombreMascota=$chip=$color=$notas=$pais=$provincia=$canton=$distrito=$direccion="";
                     } else {
-                        $idUser = -1;
+                        $idMascota = -1;
                         $idDireccion = "";
                         $idDir ="";
-                        $user = test_input($_POST["nombreUsuario"]); //si si esta verificarlo 
-                        $pass = test_input($_POST["contraseña"]);    // si si esta verificarlo
-                        $correo = test_input($_POST["correo"]); //si si esta verificarlo 
-                        $telefono = test_input($_POST["teléfono"]); //si si esta verificarlo 
-                        $nombre = test_input($_POST["nombre"]); //si si esta verificarlo 
-                        $apellido1 = test_input($_POST["apellido1"]); //si si esta verificarlo 
-                        $apellido2 = test_input($_POST["apellido2"]); //si si esta verificarlo 
-                        $fecha = test_input($_POST["fechaNacimiento"]); //si si esta verificarlo 
+                        $tipoMascota = test_input($_POST["tipoMascota"]); //si si esta verificarlo 
+                        $raza = test_input($_POST["raza"]);    // si si esta verificarlo
+                        $nombreMascota = test_input($_POST["nombreMascota"]); //si si esta verificarlo 
+                        $chip = test_input($_POST["chip"]); //si si esta verificarlo 
+                        $color = test_input($_POST["color"]); //si si esta verificarlo 
+                        $notas = test_input($_POST["notas"]); //si si esta verificarlo 
                         $pais = test_input($_POST["pais"]); //si si esta verificarlo 
                         $provincia = test_input($_POST["provincia"]); //si si esta verificarlo 
                         $canton = test_input($_POST["canton"]); //si si esta verificarlo 
                         $distrito = test_input($_POST["distrito"]); //si si esta verificarlo 
                         $direcccion = test_input($_POST["direccion"]); //si si esta verificarlo 
+                        
+                        
+                        
                         
                         $stid = oci_parse($conn, 'begin :m := insertarDireccion(:a,:b,:c,:d,:e); end;'); 
                         oci_bind_by_name($stid, ':a', $pais);
@@ -110,20 +98,20 @@
                         
                         $idDir = $idDireccion;
                         
-                        $stid = oci_parse($conn, 'begin :i := insertarUsuario(:a,:b,:n,:e,:f,:g,:d,:c); end;'); 
-                        oci_bind_by_name($stid, ':a', $user);
-                        oci_bind_by_name($stid, ':b', $pass);
-                        oci_bind_by_name($stid, ':n', $idDir);
-                        oci_bind_by_name($stid, ':e', $nombre);
-                        oci_bind_by_name($stid, ':f', $apellido1);
-                        oci_bind_by_name($stid, ':g', $apellido2);
-                        oci_bind_by_name($stid, ':d', $telefono);
+                        $stid = oci_parse($conn, 'begin :i := insertarMascota(:a,:b,:n,:e,:f,:g,:d,:c); end;'); 
+                        oci_bind_by_name($stid, ':a', $tipoMascota);
+                        oci_bind_by_name($stid, ':b', $raza);
+                        oci_bind_by_name($stid, ':e', $nombreMascota);
+                        oci_bind_by_name($stid, ':f', $chip);
+                        oci_bind_by_name($stid, ':g', $color);
+                        oci_bind_by_name($stid, ':d', $notas);
                         oci_bind_by_name($stid, ':c', $correo);
-                        oci_bind_by_name($stid, ':i', $idUser);
+                        oci_bind_by_name($stid, ':n', $idDir);
+                        oci_bind_by_name($stid, ':i', $idMascota);
                         oci_execute($stid);
                         
-                         if($idUser != -1){    //si no retorna null pasar 
-                            header('Location: login.php');       
+                         if($idMascota != -1){    //si no retorna null pasar 
+                            header('Location: index.php');       
                         }else{
                             $validacionError = "Hubo un error en el registro vuelva a registrarse";   
                         }
@@ -159,23 +147,20 @@
           
         </div>
 
+
         <div class="estructuraForm">
             <form name="registrarMascotaEncontrada_form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"
                   enctype="multipart/form-data">      
                 <div class="header">
                     <img id = "logo" src="graficos/logo1.png";
                 </div>
-                    
-                    
-                    
+                       
                     <div class="contenedor">         
                         <label for="campo obligatorio"> *Campo Obligatorio:</label>
                         
                         <h1 class="tagInfoMascota"> Información de la mascota <span class="triangulo"</span></h1>
                         
                         <label for="Tipo de Mascota"> * Tipo de mascota:</label>
-                        
-                        
                         <select name="tipoMascota"  id="tipoMascota" onclick="modificarSelect('tipoMascota', 'raza')">
                             <option value=""> --elejir tipo mascota-- </option>
                             <?php
@@ -184,17 +169,17 @@
                                 while(($row = oci_fetch_array($stid, OCI_BOTH))!= false) {
                                     echo utf8_encode('<option value='.$row['NOMBRE_TIPO'].'>' . $row['NOMBRE_TIPO'] . '</option>');
                                 }
-                            ?>   
+                            ?>
+                            <span class="error"> <?php echo $tipoMascotaError;?></span>
                         </select>
                         
-                        
-                        
-                        
+                       
                         <label for="Raza"> * Raza:</label>
-                        <select id="raza">
-                            <option value=""> --elejir una raza-- </option>      
+                        <select id="raza" name="raza">
+                            <option value=""> --elejir una raza-- </option>     
+                            <span class="error"> <?php echo $razaError;?></span>
                         </select>
-
+  
                         <label for="nombreMascota"> Nombre de la mascota:</label>
                         <input type="text" name="nombreMascota" id="nombreMascota" placeholder="Nombre Mascota">
 
@@ -203,6 +188,7 @@
 
                         <label for="Color"> * Color:</label>
                         <input type="text" name="color" id="color" placeholder="Color">
+                        <span class="error"> <?php echo  $colorError;?></span>
 
                         <label for="notas"> Notas:</label>
                         <input type="text" name="notas" id="notas" placeholder="Notas">
@@ -211,32 +197,45 @@
                         <h1 class="tagMasInfo"> Más información <span class="triangulo"</span></h1>
                         
                         <label for="lugarPerdido"> * Lugar donde fué encontrado (a):</label>
-                        
-                        <label for="pais"> País:</label>
-                            <select id="pais">
-                            <option value=""> --país-- </option>
+                    
+                       <label for="Pais"> Pais:</label>
+                        <select name="pais"  id="pais" onclick="modificarSelect('pais', 'provincia')">
+                        <option value="">-----</option> 
+                            <?php
+                                $stid = oci_parse($conn, 'SELECT NOMBRE_PAIS FROM TBPAIS'); 
+                                oci_execute($stid);
+                                while(($row = oci_fetch_array($stid, OCI_BOTH))!= false) {
+                                    echo utf8_encode('<option value='.$row['NOMBRE_PAIS'].'>' . $row['NOMBRE_PAIS'] . '</option>');
+                                }
+                            ?>  
+                        <span class="error"> <?php echo $paisError;?></span>  
                         </select>
                         
-                        <label for="provincia"> Provincia:</label>
-                            <select id="provincia">
-                            <option value=""> --provincia-- </option>
+                        
+                        <label for="Provincia"> Provincia:</label>   
+                        <select name="provincia"  id="provincia" onclick="modificarSelect('provincia', 'canton')">
+                        <option value="">-----</option>
+                            <span class="error"> <?php echo $provinciaError;?></span>
                         </select>
                         
-                        <label for="canton"> Cantón:</label>
-                            <select id="canton">
-                            <option value=""> --cantón-- </option>
+                        <label for="Canton"> Canton:</label>    
+                        <select name="canton"  id="canton" onclick="modificarSelect('canton', 'distrito')">
+                        <option value="">-----</option> 
+                            <span class="error"> <?php echo $cantonError;?></span>
                         </select>
                         
-                        <label for="distrito"> Distrito:</label>
-                            <select id="ditrito">
-                            <option value=""> --distrito-- </option>
+                        <label for="Distrito"> Distrito:</label> 
+                        <select name="distrito"  id="distrito" >
+                        <option value="">-----</option> 
+                            <span class="error"> <?php echo $distritoError;?></span>
                         </select>
                         
-                        <label for="descripciones"> Descripciones:</label>
-                        <textarea id="descripciones" placeholder="Descripciones"></textarea>
+                        
+                        <label for="direccion">Dirección exacta:</label>
+                        <textarea name="direccion" id="direccion" placeholder="direccion"></textarea>
                         
                         <label for="FechaExtravio"> Día en que fué Encontrado (a):</label>
-                        <input type="date" id="fechaExtravío" placeholder="Fecha de encontrado">   
+                        <input type="date" name="fechaExtravio" id="fechaExtravio" placeholder="Fecha de encontrado">   
                         
   
                         <input type="submit" name="register" value="Registrar" >
