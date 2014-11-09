@@ -126,35 +126,38 @@
                     <img id = "logo" src="graficos/logo1.png";
                 </div>
                     <div class="contenedor">
-                        <p>*Campos Requeridos</p>
+                        <font color="white"> *Campo Obligatorio</font> 
+                        
+                        <h1 class="tagInfo"> Información del usuario <span class="triangulo"</span></h1>
+                        
                         <span class="error"> <?php echo $validacionError;?></span>
                         
-                        <label for="nombreUsuario"> *Nombre de usuario:</label>
+                        <label for="nombreUsuario"> * Nombre de usuario:</label>
                         <input type="text" name = "nombreUsuario"id="nombreUsuario" placeholder="Nombre Usuario">
                         <span class="error"> <?php echo $userError;?></span>
                         
 
-                        <label for="Contraseña"> *Contraseña:</label>
+                        <label for="Contraseña"> * Contraseña:</label>
                         <input type="password" name = " contraseña"id="contraseña" placeholder="Contraseña">
                         <span class="error"> <?php echo $passError;?></span>
 
-                        <label for="Correo"> *Correo:</label>
+                        <label for="Correo"> * Correo:</label>
                         <input type="email" name= "correo"id="correo" placeholder="Correo">
                         <span class="error"> <?php echo $correoError;?></span>
                         
-                        <label for="Teléfono"> *Teléfono:</label>
+                        <label for="Teléfono"> * Teléfono:</label>
                         <input type="text" name="teléfono"id="teléfono" placeholder="Teléfono">
                         <span class="error"> <?php echo $telefonoError;?></span>
 
-                        <label for="Nombre"> *Nombre:</label>
+                        <label for="Nombre"> * Nombre:</label>
                         <input type="text" name= "nombre"id="nombre" placeholder="Nombre">
                         <span class="error"> <?php echo $nombreError;?></span>
 
-                        <label for="Apellido1"> *Primer Apellido:</label>
+                        <label for="Apellido1"> * Primer Apellido:</label>
                         <input type="text" name = "apellido1"id="apellido1" placeholder="Primer Apellido">
                         <span class="error"> <?php echo $apellido1Error;?></span>
 
-                        <label for="Apellido2"> *Segundo Apellido:</label>
+                        <label for="Apellido2"> * Segundo Apellido:</label>
                         <input type="text" name = "apellido2"id="apellido2" placeholder="Segundo Apellido">
                         <span class="error"> <?php echo $apellido2Error;?></span>
 
@@ -162,8 +165,9 @@
                         <input type="date" name = "fechaNacimiento"id="fechaNacimiento" placeholder="Fecha de nacimiento">                   
                         <span class="error"> <?php echo $fechaError;?></span>
                         
-                        <label> *Direccion:</label>
+                        <h1 class="tagMasInfo"> Más Información <span class="triangulo"</span></h1>
                         
+                        <label> * Direccion:</label>
                         
                         <label for="Pais"> Pais:</label>
                         <select name="pais"  id="pais" onclick="modificarSelect('pais', 'provincia')">
