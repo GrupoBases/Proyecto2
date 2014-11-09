@@ -31,7 +31,16 @@
                     <li><a href="">Donaciones</a></li>
                     <li><a href="">Contacto</a></li>
                 </ul>
+                <?php
+                    session_start();
+                     echo "<p>Bienvenido " . $_SESSION['userName']."</p>" ;   
+
+
+                ?>
             </div>
+            
+    
+            
     
             <!--slider show----------------------------------------------------------------------->
             <div class="main">
