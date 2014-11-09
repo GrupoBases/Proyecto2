@@ -52,11 +52,11 @@
 
                     $_SESSION["userName"] = $user;
                     $_SESSION["id_user"] = $idUser;
-                    header('Location: principal.php');       
+                    header('Location: index.php');       
                 }else{
                     $validacionError = "Nombre de Usuario o Contraseña no validos";   
                 }  
-            } //else pricipal 
+            } 
         }
         else if ($_SERVER["REQUEST_METHOD"] == "POST" and ($_POST['register'])) {
             header('Location: registrarUsuario.php');  
