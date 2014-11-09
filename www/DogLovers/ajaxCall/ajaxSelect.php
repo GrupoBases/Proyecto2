@@ -6,8 +6,8 @@ include "../Conexion.php";
 $conexion=new Conexion();
 $conn=$conexion->conectar();
 
-$var=$_POST['svalue'];
-$target=$_POST['target'];
+$var=$_POST['svalue'];      // el valor seleccionado del combo box padre
+$target=$_POST['target'];   //el combo box que hay que cambiar
 
 
 
