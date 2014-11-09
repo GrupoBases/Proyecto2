@@ -26,10 +26,9 @@
                 </div>
 
                 <div class="footer">
-                    <input type="button" name="submit" value="Login" class="button" onClick="enviar('principal.php')"/>
-                    <a href="http://www.yahoo.com" target="_self"><input type="submit" name="submit" value="Register" class="register" />
+                    <input type="button" name="submit" value="Login" class="button" />
+                    <input type="submit" name="submit" value="Register" class="register" />
                     
-                     <input type="button" name="boton" value="Aceptar" /> </a> 
                 </div>
                     
             </form>
