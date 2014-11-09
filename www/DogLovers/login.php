@@ -52,7 +52,7 @@
 
                     $_SESSION["userName"] = $user;
                     $_SESSION["id_user"] = $idUser;
-                    header('Location: welcome.php');       
+                    header('Location: principal.php');       
                 }else{
                     $validacionError = "Nombre de Usuario o Contraseña no validos";   
                 }  

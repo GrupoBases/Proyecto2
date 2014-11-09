@@ -8,6 +8,8 @@
         
         <link rel="shortcut icon" type="image/x-icon" href="graficos/favicon.ico">
         <link rel="stylesheet" type="text/css" href="css/registrarUsuario.css" />
+        <script src="js/jquery-2.1.1.js"></script>
+        <script src="js/jquery.select.js"></script>
     </head>
        
     <body>
@@ -16,11 +18,7 @@
         include 'funcionalidad.php';
         $conexion=new Conexion();
         $conn=$conexion->conectar();
-        
-        // para el select dinamico
-        $usuarios = oci_parse($conn, "SELECT nombreUsuario from tbUsuario where nombreUsuario = 'admin'" ); 
-        oci_execute($usuarios); 
-        // para el select dinamico 
+         
     
         $user = $pass = $correo = $telefono = $nombre = $apellido1 = $apellido2 = $fecha =""; //variables para pasar datos
         $userError=$passError=$validacionError=$correoError=$telefonoError=$nombreError=$apellido1Error=$apellido2Error=$fechaError=""; //var errores
@@ -76,7 +74,6 @@
                         oci_execute($stid);
                         
                          if(!empty($idUser)){    //si no retorna null pasar 
-
                             header('Location: login.php');       
                         }else{
                             $validacionError = "Hubo un error en el registro vuelva a registrarse";   
@@ -96,72 +93,74 @@
                     <img id = "logo" src="graficos/logo1.png";
                 </div>
                     <div class="contenedor">
-                        <!--<p>*Campos Requeridos</p>-->
+                        <p>*Campos Requeridos</p>
                         <span class="error"> <?php echo $validacionError;?></span>
                         
-                        <label for="nombreUsuario"> Nombre de usuario:</label>
+                        <label for="nombreUsuario"> *Nombre de usuario:</label>
                         <input type="text" id="nombreUsuario" placeholder="Nombre Usuario">
                         <span class="error"> <?php echo $userError;?></span>
                         
 
-                        <label for="Contraseña"> Contraseña:</label>
+                        <label for="Contraseña"> *Contraseña:</label>
                         <input type="password" id="contraseña" placeholder="Contraseña">
                         <span class="error"> <?php echo $passError;?></span>
 
-                        <label for="Correo"> Correo:</label>
+                        <label for="Correo"> *Correo:</label>
                         <input type="email" id="correo" placeholder="Correo">
                         <span class="error"> <?php echo $correoError;?></span>
                         
-                        <label for="Teléfono"> Teléfono:</label>
+                        <label for="Teléfono"> *Teléfono:</label>
                         <input type="text" id="teléfono" placeholder="Teléfono">
                         <span class="error"> <?php echo $telefonoError;?></span>
 
-                        <label for="Nombre"> Nombre:</label>
+                        <label for="Nombre"> *Nombre:</label>
                         <input type="text" id="nombre" placeholder="Nombre">
                         <span class="error"> <?php echo $nombreError;?></span>
 
-                        <label for="Apellido1"> Primer Apellido:</label>
+                        <label for="Apellido1"> *Primer Apellido:</label>
                         <input type="text" id="apellido1" placeholder="Primer Apellido">
                         <span class="error"> <?php echo $apellido1Error;?></span>
 
-                        <label for="Apellido2"> Segundo Apellido:</label>
+                        <label for="Apellido2"> *Segundo Apellido:</label>
                         <input type="text" id="apellido2" placeholder="Segundo Apellido">
                         <span class="error"> <?php echo $apellido2Error;?></span>
 
-                        <label for="FechaNacimiento"> Fecha de Nacimiento:</label>
+                        <label for="FechaNacimiento"> *Fecha de Nacimiento:</label>
                         <input type="date" id="fechaNacimiento" placeholder="Fecha de nacimiento">                   
                         <span class="error"> <?php echo $fechaError;?></span>
                         
+                        <label> *Direccion:</label>
+                        
+                        
                         <label for="Pais"> Pais:</label>
-                        <select id="pais"> 
-                            <option value="pais"> Costa Rica</option>
+                        <select name="pais"  id="pais" onclick="modificarSelect('pais', 'provincia')">
+                            <?php
+                                $stid = oci_parse($conn, 'SELECT * FROM autor'); // Cambair este select por uno que seleccione los nombres de                                                                                       los paises
+                                oci_execute($stid);
+                                while(($row = oci_fetch_array($stid, OCI_BOTH))!= false) {
+                                    echo '<option value='.$row['AUTOR_NAME'].'>' . $row['AUTOR_NAME'] . '</option>';
+                                }
+                            ?>  
                         </select>
                         
-                        <label for="Provincia"> Provincia:</label>
-                        <select id="provincia"> 
-                            <option value="san jose"> San José</option>
-                            <option value="alajuela"> Alajuela</option>
-                            <option value="cartago"> Cartago</option>
-                            <option value="heredia"> Heredia</option>
-                            <option value="limon"> Limón</option>
-                            <option value="guanacaste"> Guanacaste</option>
-                            <option value="puntarenas"> Puntarenas</option>            
+                        
+                        <label for="Provincia"> Provincia:</label>   
+                        <select name="provincia"  id="provincia" onclick="modificarSelect('provincia', 'canton')">
+                            <option value="">-----</option>   
                         </select>
                         
-                        <label for="Canton"> Canton:</label>
-                        
-                        <!--select dinamico-->
-                        <select id="canton">
-                             <?php while(($row = oci_fetch_array($usuarios, OCI_BOTH))!= false) {
-                                    echo '<option value="'.$row['NOMBREUSUARIO'].'">' . $row['NOMBREUSUARIO'] . "</option>";
-                        }?>
+                        <label for="Canton"> Canton:</label>    
+                        <select name="canton"  id="canton" onclick="modificarSelect('canton', 'distrito')">
+                            <option value="">-----</option>  
                         </select>
                         
-                        <label for="Distrito"> Distrito:</label>
-                        <select id="distrito">
+                        <label for="Distrito"> Distrito:</label> 
+                        <select name="distrito"  id="distrito" >
+                            <option value="">-----</option>
                         </select>
                         
-                        <label for="Dirección"> Dirección:</label>
+                        
+                        <label for="Dirección"> Dirección Exacta:</label>
                         <textarea id="dirección" placeholder="Dirección"></textarea>
 
                          <div class="footer">
