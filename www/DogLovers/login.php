@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
  
 <html lang='en'>
     <head>
@@ -84,8 +84,8 @@
                 </div>
 
                 <div class="footer">
-                    <input type="submit" name="login" value="Login" class="button" />
-                    <input type="submit" name="register" value="Registrar" class="register" />
+                    <input type="submit" name="login" value="Entrar" class="button" />
+                    <input type="submit" name="register" value="Registrarse" class="register" />
                         
                 </div>
             </form>
