@@ -8,6 +8,8 @@
         
         <link rel="shortcut icon" type="image/x-icon" href="graficos/favicon.ico">
         <link rel="stylesheet" type="text/css" href="css/miPerfil.css" />
+        <script src="js/jquery-2.1.1.js"></script>
+        <script src="js/jquery.select.js"></script>
     </head>
        
     <body>
@@ -20,6 +22,9 @@
         include 'funcionalidad.php';
         $conexion=new Conexion();
         $conn=$conexion->conectar();
+        $tipoMascota=$raza=$nombreMascota=$chip=$color=$notas=$pais=$provincia=$canton=$distrito=$direccion="";// var datos   
+
+        $tipoMascotaError=$razaError=$colorError=$paisError=$provinciaError=$cantonError=$distritoError=$validacionError= $nombreMascotaError= $tamañoError =$lugarError="";// var errores
     
         
         if ($_SERVER["REQUEST_METHOD"] == "POST" and ($_POST['actualizar'])) {
@@ -58,21 +63,46 @@
                         <label for="FechaNacimiento"> Fecha de Nacimiento:</label>
                         <input type="date" id="fechaNacimiento" placeholder="Fecha de nacimiento">  
                         
-                        <label for="Pais"> Pais:</label>
-                        <select id="pais"> 
-                            <option value="pais"> Costa Rica</option>
-                        </select>
+                        <label for="pais"> País:</label>
+                            <select name="pais"  id="pais" onclick="modificarSelect('pais', 'provincia')">
+                            <option value="">-----</option> 
+                            <?php
+                                $stid = oci_parse($conn, 'SELECT NOMBRE_PAIS FROM TBPAIS'); 
+                                oci_execute($stid);
+                                while(($row = oci_fetch_array($stid, OCI_BOTH))!= false) {
+                                    echo utf8_encode('<option value='.$row['NOMBRE_PAIS'].'>' . $row['NOMBRE_PAIS'] . '</option>');
+                                }
+                            ?>  
                         
-                        <label for="Provincia"> Provincia:</label>
-                        <select id="provincia"> 
-                            <option value="san jose"> San José</option>
-                            <option value="alajuela"> Alajuela</option>
-                            <option value="cartago"> Cartago</option>
-                            <option value="heredia"> Heredia</option>
-                            <option value="limon"> Limón</option>
-                            <option value="guanacaste"> Guanacaste</option>
-                            <option value="puntarenas"> Puntarenas</option>            
                         </select>
+                        <br>
+                        <span class="error"> <?php echo $paisError;?></span> 
+                        
+                        
+                        
+                        <label for="provincia"> Provincia:</label>
+                            <select name ="provincia"id="provincia" onclick="modificarSelect('provincia', 'canton')">>
+                            <option value="">-----</option>
+                            
+                        </select>
+                        <br>
+                        <span class="error"> <?php echo $provinciaError;?></span>
+                        
+                        <label for="canton"> Cantón:</label>
+                            <select name= "canton"id="canton" onclick="modificarSelect('canton', 'distrito')">
+                            <option value="">-----</option> 
+                            
+                        </select>
+                        <br>
+                        <span class="error"> <?php echo $cantonError;?></span>
+                        
+                        <label for="distrito"> Distrito:</label>
+                            <select name = "distrito" id="distrito">
+                            <option value="">-----</option> 
+                            
+                        </select>
+                        <br>
+                        <span class="error"> <?php echo $distritoError;?></span>
                         
                         <label for="Dirección"> Dirección:</label>
                         <textarea id="dirección" placeholder="Dirección"></textarea>
