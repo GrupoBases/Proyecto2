@@ -201,28 +201,36 @@
                                     echo utf8_encode('<option value='.$row['NOMBRE_PAIS'].'>' . $row['NOMBRE_PAIS'] . '</option>');
                                 }
                             ?>  
-                        <span class="error"> <?php echo $paisError;?></span> 
+                        
                         </select>
+                        <br>
+                        <span class="error"> <?php echo $paisError;?></span> 
                         
                         
                         
                         <label for="provincia"> Provincia:</label>
                             <select name ="provincia"id="provincia" onclick="modificarSelect('provincia', 'canton')">>
                             <option value="">-----</option>
-                            <span class="error"> <?php echo $provinciaError;?></span>
+                            
                         </select>
+                        <br>
+                        <span class="error"> <?php echo $provinciaError;?></span>
                         
                         <label for="canton"> Cantón:</label>
                             <select name= "canton"id="canton" onclick="modificarSelect('canton', 'distrito')">
                             <option value="">-----</option> 
-                            <span class="error"> <?php echo $cantonError;?></span>
+                            
                         </select>
+                        <br>
+                        <span class="error"> <?php echo $cantonError;?></span>
                         
                         <label for="distrito"> Distrito:</label>
                             <select name = "distrito" id="distrito">
                             <option value="">-----</option> 
-                            <span class="error"> <?php echo $distritoError;?></span>
+                            
                         </select>
+                        <br>
+                        <span class="error"> <?php echo $distritoError;?></span>
                         
                         <label for="Dirección"> Dirección Exacta:</label>
                         <textarea name = "direccion" id="dirección" placeholder="Dirección"></textarea>
