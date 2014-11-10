@@ -33,7 +33,7 @@
                         <ul>
                             <li><a href="registrarMascotaPerdida.php">Perdí una mascota</a></li>
                             <li><a href="registrarMascotaEncontrada.php">Encontré una mascota</a></li>
-                            <li><a href="">Buscar</a></li>
+                            <li><a href="buscarMascota.php">Buscar</a></li>
                             </li>
                         </ul>
                     </li>
@@ -41,9 +41,9 @@
                     </li>
                     <li><a href="casaCuna.php">Casa Cuna</a></li>
                     <li><a href="adopciones.php">Adopciones</a></li>
-                    <li><a href="">Mi Perfil</a></li>
-                    <li><a href="">Donaciones</a></li>
-                    <li><a href="">Contacto</a></li>
+                    <li><a href="miPerfil.php">Mi Perfil</a></li>
+                    <li><a href="registrarDonaciones.php">Donaciones</a></li>
+                    <li><a href="contacto.php">Contacto</a></li>
                 </ul>
         
         
