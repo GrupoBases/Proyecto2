@@ -42,11 +42,28 @@
                     <img id = "logo" src="graficos/logo1.png";
                 </div>
                     <div class="contenedor">            
+                        
                         <label for="nombreUsuario"> Nombre de usuario:</label>
-                        <input type="text" id="nombreUsuario" placeholder="Nombre Usuario">
+                        <?php
+                            $stid = oci_parse($conn, "SELECT NOMBREUSUARIO FROM TBUSUARIO where ID_USUARIO=".$_SESSION['id_user']); 
+                            oci_execute($stid);
+                            $row = oci_fetch_array($stid, OCI_BOTH);
+                            echo "<input name=\"user\" type=\"text\" class=\"input username\" value='".$row['NOMBREUSUARIO']."'/>";                              
+                        ?>  
+                        
+                        
+                        
 
                         <label for="Contraseña"> Contraseña:</label>
-                        <input type="password" id="contraseña" placeholder="Contraseña">
+                         <?php
+                            $stid = oci_parse($conn, "SELECT CONTRASENA FROM TBUSUARIO where ID_USUARIO=".$_SESSION['id_user']); 
+                            oci_execute($stid);
+                            $row = oci_fetch_array($stid, OCI_BOTH);
+                            echo "<input name=\"pass\" type=\"text\" class=\"input username\" value='".$row['CONTRASENA']."'/>";                              
+                        ?>  
+                        
+                        
+                        
 
                         <label for="correo"> Correo:</label>
                         <input type="email" id="correo" placeholder="Correo">
