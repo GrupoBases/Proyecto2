@@ -10,7 +10,7 @@
         <link rel="stylesheet" type="text/css" href="css/registrarMascotaEncontrada.css" />
         
         <script src="js/jquery-2.1.1.js"></script>
-        <script src="jquery.select.js"></script>
+        <script src="js/jquery.select.js"></script>
     </head>
        
     <body>
@@ -26,14 +26,13 @@
         include 'funcionalidad.php';
         $conexion=new Conexion();
         $conn=$conexion->conectar();
-         
         $tipoMascota=$raza=$nombreMascota=$chip=$color=$notas=$pais=$provincia=$canton=$distrito=$direccion="";// var datos   
 
-        $tipoMascotaError=$razaError=$colorError=$paisError=$provinciaError=$cantonError=$distritoError=$validacionError="";// var errores
+        $tipoMascotaError=$razaError=$colorError=$paisError=$provinciaError=$cantonError=$distritoError=$validacionError= $nombreMascotaError= $tamañoError =$lugarError="";// var errores
         
 
         if ($_SERVER["REQUEST_METHOD"] == "POST" and ($_POST['register'])) { //Si estamos recibiendo datos nuevos verificarlos
-                    if(empty($_POST["tipoMascota"]) or empty($_POST["raza"]) or empty($_POST["color"]) or  empty($_POST["pais"]) or                                     empty($_POST["provincia"]) or empty($_POST["canton"]) or empty($_POST["distrito"])) {
+                    if(empty($_POST["tipoMascota"]) or empty($_POST["raza"]) or empty($_POST["color"]) or  empty($_POST["pais"]) or                                     empty($_POST["provincia"]) or empty($_POST["canton"]) or empty($_POST["distrito"]) or empty($_POST["tamaño"])) {
                         
                         if(empty($_POST["tipoMascota"])){
                             $tipoMascotaError = "*Tipo de mascota requerido";  //si el username no se encuentra mostrar error
@@ -56,13 +55,18 @@
                         if (empty($_POST["distrito"])) {
                             $distritoError = "*Distrito requerido"; //si la pass no se encuentra mostrar error
                         }
-
+                        if (empty($_POST["tamaño"])) {
+                            $tamañoError = "*Tamaño requerido"; //si la pass no se encuentra mostrar error
+                        }
                         
-                    $tipoMascota=$raza=$nombreMascota=$chip=$color=$notas=$pais=$provincia=$canton=$distrito=$direccion="";
-                    } else {
+
+                    } // if pequeno 
+        else {
                         $idMascota = -1;
                         $idDireccion = "";
                         $idDir ="";
+                        $idUsuario =$_SESSION["id_user"];
+                        $tamano = test_input($_POST["tamaño"]);    // si si esta verificarlo 
                         $tipoMascota = test_input($_POST["tipoMascota"]); //si si esta verificarlo 
                         $raza = test_input($_POST["raza"]);    // si si esta verificarlo
                         $nombreMascota = test_input($_POST["nombreMascota"]); //si si esta verificarlo 
@@ -74,6 +78,7 @@
                         $canton = test_input($_POST["canton"]); //si si esta verificarlo 
                         $distrito = test_input($_POST["distrito"]); //si si esta verificarlo 
                         $direcccion = test_input($_POST["direccion"]); //si si esta verificarlo 
+                        $recompenza = 0;
                         
                         $stid = oci_parse($conn, 'begin :m := insertarDireccion(:a,:b,:c,:d,:e); end;'); 
                         oci_bind_by_name($stid, ':a', $pais);
@@ -85,17 +90,20 @@
                         oci_execute($stid);
                         
                         $idDir = $idDireccion;
-                        
-                        $stid = oci_parse($conn, 'begin :i := insertarMascota(:a,:b,:n,:e,:f,:g,:d,:c); end;'); 
-                        oci_bind_by_name($stid, ':a', $tipoMascota);
-                        oci_bind_by_name($stid, ':b', $raza);
-                        oci_bind_by_name($stid, ':e', $nombreMascota);
-                        oci_bind_by_name($stid, ':f', $chip);
-                        oci_bind_by_name($stid, ':g', $color);
-                        oci_bind_by_name($stid, ':d', $notas);
-                        oci_bind_by_name($stid, ':c', $correo);
-                        oci_bind_by_name($stid, ':n', $idDir);
-                        oci_bind_by_name($stid, ':i', $idMascota);
+                        $estado = 1;
+                        $stid = oci_parse($conn, 'begin :j := insertarMascota(:a,:b,:c,:x,:i,:q,:d,:e,:f,:w,:g); end;'); 
+                        oci_bind_by_name($stid, ':a', $idUsuario);
+                        oci_bind_by_name($stid, ':b', $tipoMascota);
+                        oci_bind_by_name($stid, ':c', $raza);
+                        oci_bind_by_name($stid, ':x', $tamano);
+                        oci_bind_by_name($stid, ':q', $estado);
+                        oci_bind_by_name($stid, ':d', $nombreMascota);
+                        oci_bind_by_name($stid, ':e', $chip);
+                        oci_bind_by_name($stid, ':f', $color);
+                        oci_bind_by_name($stid, ':g', $notas);
+                        oci_bind_by_name($stid, ':i', $idDir);
+                        oci_bind_by_name($stid, ':w', $recompenza);
+                        oci_bind_by_name($stid, ':j', $idMascota);
                         oci_execute($stid);
                         
                          if($idMascota != -1){    //si no retorna null pasar 
@@ -104,11 +112,11 @@
                             $validacionError = "Hubo un error en el registro vuelva a registrarse";   
                         }
                           
-                    } 
-                }
+                    }  // primer else
+        } // primer if o principal 
         else if ($_SERVER["REQUEST_METHOD"] == "POST" and ($_POST['cancelar'])) {
                     header('Location: index.php');  
-                }
+        } // else if 
         ?>
         
         
@@ -123,43 +131,65 @@
                         <label for="campo obligatorio"> *Campo Obligatorio:</label>
                         
                         <h1 class="tagInfoMascota"> Información de la mascota <span class="triangulo"</span></h1>
-                        
-                        <label for="Tipo de Mascota"> * Tipo de mascota:</label>
+                        <span class="error"> <?php echo $validacionError;?></span>
+                        <label for="Tipo de Mascota"> * Tipo de mascota:</label> 
                         <select name="tipoMascota"  id="tipoMascota" onclick="modificarSelect('tipoMascota', 'raza')">
-                            <option value=""> --elejir tipo mascota-- </option>
+                            <option value="">-----</option>
                             <?php
-                                $stid = oci_parse($conn, 'SELECT NOMBRE_TIPO FROM TBTIPOMASCOTA'); 
+                                $stid = oci_parse($conn, 'SELECT NOMBRETIPOMASCOTA FROM TBTIPOMASCOTA'); 
                                 oci_execute($stid);
                                 while(($row = oci_fetch_array($stid, OCI_BOTH))!= false) {
-                                    echo utf8_encode('<option value='.$row['NOMBRE_TIPO'].'>' . $row['NOMBRE_TIPO'] . '</option>');
+                                    echo utf8_encode('<option value='.$row['NOMBRETIPOMASCOTA'].'>' . $row['NOMBRETIPOMASCOTA'] . '</option>');
                                 }
                             ?>
-                            <span class="error"> <?php echo $tipoMascotaError;?></span>
+                            
                             
                         </select>
+                        <br>
+                        <span class="error"> <?php echo $tipoMascotaError;?></span>
+                        
                         
                         <label for="Raza"> * Raza:</label>
-                        <select id="raza">
-                            <option value=""> --elejir una raza-- </option>
-                            <span class="error"> <?php echo $razaError;?></span>
+                        <select name = "raza" id="raza">
+                            <option value="">-----</option> 
+                            
                         </select>
+                        <br>
+                        <span class="error"> <?php echo $razaError;?></span>
+                        
+                        <label for="Tamaño"> *Tamaño:</label>
+                            <select name="tamaño"  id="tamaño"> 
+                                <option value="">-----</option> 
+                            <?php
+                                $stid = oci_parse($conn, 'SELECT NOMBRETAMANO FROM TBTAMANOMASCOTA'); 
+                                oci_execute($stid);
+                                while(($row = oci_fetch_array($stid, OCI_BOTH))!= false) {
+                                    echo utf8_encode('<option value='.$row['NOMBRETAMANO'].'>' . $row['NOMBRETAMANO'] . '</option>');
+                                }
+                            ?>  
+                        
+                        </select>
+                        <br>
+                        <span class="error"> <?php echo $tamañoError;?></span> 
 
                         <label for="nombreMascota"> Nombre de la mascota:</label>
-                        <input type="text" id="nombreMascota" placeholder="Nombre Mascota">
-
+                        <input type="text" name = "nombreMascota"id="nombreMascota" placeholder="Nombre Mascota">
+                        <span class="error"> <?php echo $nombreMascotaError;?></span>
+                        
                         <label for="Chip"> Chip de identificación:</label>
-                        <input type="text" id="chip" placeholder="Chip de identificación">
-
+                        <input type="text" name = "chip" id="chip" placeholder="Chip de identificación">
+                        
                         <label for="Color"> * Color:</label>
-                        <input type="text" id="color" placeholder="Color">
+                        <input type="text" name = "color" id="color" placeholder="Color">
+                        <span class="error"> <?php echo $colorError;?></span>
 
                         <label for="notas"> Notas:</label>
-                        <input type="text" id="notas" placeholder="Notas">
-                        
+                        <input type="text" name = "notas" id="notas" placeholder="Notas">
                         
                         <h1 class="tagMasInfo"> Más información <span class="triangulo"</span></h1>
                         
                         <label for="lugarPerdido"> * Lugar donde fué encontrado (a):</label>
+                        <span class="error"> <?php echo $lugarError;?></span>
                         
                         <label for="pais"> País:</label>
                             <select name="pais"  id="pais" onclick="modificarSelect('pais', 'provincia')">
@@ -174,33 +204,36 @@
                         <span class="error"> <?php echo $paisError;?></span> 
                         </select>
                         
+                        
+                        
                         <label for="provincia"> Provincia:</label>
-                            <select id="provincia">
+                            <select name ="provincia"id="provincia" onclick="modificarSelect('provincia', 'canton')">>
                             <option value="">-----</option>
                             <span class="error"> <?php echo $provinciaError;?></span>
                         </select>
                         
                         <label for="canton"> Cantón:</label>
-                            <select id="canton">
+                            <select name= "canton"id="canton" onclick="modificarSelect('canton', 'distrito')">
                             <option value="">-----</option> 
                             <span class="error"> <?php echo $cantonError;?></span>
                         </select>
                         
                         <label for="distrito"> Distrito:</label>
-                            <select id="ditrito">
+                            <select name = "distrito" id="distrito">
                             <option value="">-----</option> 
                             <span class="error"> <?php echo $distritoError;?></span>
                         </select>
                         
-                        <label for="descripciones"> Descripciones:</label>
-                        <textarea id="descripciones" placeholder="Descripciones"></textarea>
+                        <label for="Dirección"> Dirección Exacta:</label>
+                        <textarea name = "direccion" id="dirección" placeholder="Dirección"></textarea>
+                        
                         
                         <label for="FechaExtravio"> Día en que fué Encontrado (a):</label>
                         <input type="date" id="fechaExtravío" placeholder="Fecha de encontrado">   
                         
 
-                        <input type="submit" value="Registrar">
-                        <input type="submit" value="Cancelar">  
+                        <input type="submit" name = "register" value="Registrar">
+                        <input type="submit" name = "cancelar" value="Cancelar">  
                     </div>
             </form>  
         </div>

@@ -8,7 +8,7 @@ class Conexion{
 	//conectarse con la base
 	public function conectar(){
 		global $conn;
-		$conn = oci_connect('Proyecto2', 'Proyecto2', 'localhost:1521/dbprueba'); //('usuario', 'contrasenia', 'localhost:1521/NombreBase')
+		$conn = oci_connect('Proyecto2', 'Proyecto2', 'localhost:1521/Proyecto'); //('usuario', 'contrasenia', 'localhost:1521/NombreBase')
 		if (!$conn) {
 			$m = oci_error();
 			echo $m['message'], "\n";

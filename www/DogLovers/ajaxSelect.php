@@ -48,19 +48,19 @@ if($target == "provincia"){
 
 
 //modificar este select, falta agregar id_TipoMacota <FK> a tbRazaMascota
-/*
-}else if($target=="raza"){  
-    $stid = oci_parse($conn, "SELECT NOMBRE_RAZA FROM TBRAZA,TBTIPOMASCOTA 
-                                WHERE TBDISTRITO.ID_CANTON = TBCANTON.ID_CANTON
-                                AND TBCANTON.NOMBRE_CANTON = :r"); 
+
+else if($target=="raza"){  
+    $stid = oci_parse($conn, "SELECT NOMBRERAZA FROM TBRAZA,TBTIPOMASCOTA 
+                                WHERE TBRAZA.ID_TIPOMASCOTA  = TBTIPOMASCOTA.ID_TIPOMASCOTA 
+                                AND TBTIPOMASCOTA.NOMBRETIPOMASCOTA = :r"); 
     oci_bind_by_name($stid, ':r', $var);
     oci_execute($stid);
 
     while(($row = oci_fetch_array($stid, OCI_BOTH + OCI_RETURN_NULLS))!= false) {
-        echo utf8_encode('<option value="'.$row['NOMBRE_RAZA'].'">' . $row['NOMBRE_RAZA'] . "</option>");
+        echo utf8_encode('<option value="'.$row['NOMBRERAZA'].'">' . $row['NOMBRERAZA'] . "</option>");
     }
 }
-*/
+
 
 
 oci_free_statement($stid);
