@@ -12,7 +12,7 @@
        
     <body>
         
-         <?php>
+         <?php
             session_start();    //comprobamos si el usuario ya inicio secion
             if (!array_key_exists('userName', $_SESSION)) {
                 header('Location: login.php');
