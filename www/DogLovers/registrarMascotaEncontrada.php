@@ -86,7 +86,7 @@
                         oci_bind_by_name($stid, ':c', $canton);
                         oci_bind_by_name($stid, ':d', $distrito);
                         oci_bind_by_name($stid, ':e', $direccion);
-                        oci_bind_by_name($stid, ':m', $idDireccion);
+                        oci_bind_by_name($stid, ':m', $idDireccion,40);
                         oci_execute($stid);
                         
                         $idDir = $idDireccion;

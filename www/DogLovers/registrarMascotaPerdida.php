@@ -25,7 +25,7 @@
             include 'funcionalidad.php';
             $conexion=new Conexion();
             $conn=$conexion->conectar();
-
+            
             $tipoMascota=$raza=$tamano=$nombreMascota=$chip=$color=$notas=$pais=$provincia=$canton=$distrito=$direccion="";// var datos   
 
             $tipoMascotaError=$razaError=$colorError=$paisError=$provinciaError=$cantonError=$distritoError=$validacionError=    $nombreMascotaError= $tamañoError =$lugarError="";// var errores
@@ -63,7 +63,7 @@
                     else {
                         $idMascota = -1;
                         $idDireccion = "";
-                        $idDir ="";
+                        $idDir = "";
                         $idUsuario =$_SESSION["id_user"];
                         $tamano = test_input($_POST["tamaño"]);    // si si esta verificarlo 
                         $tipoMascota = test_input($_POST["tipoMascota"]); //si si esta verificarlo 
@@ -76,8 +76,8 @@
                         $provincia = test_input($_POST["provincia"]); //si si esta verificarlo 
                         $canton = test_input($_POST["canton"]); //si si esta verificarlo 
                         $distrito = test_input($_POST["distrito"]); //si si esta verificarlo 
-                        $direcccion = test_input($_POST["direccion"]); //si si esta verificarlo 
-                        $recompenza = 0;
+                        $direccion = test_input($_POST["direccion"]); //si si esta verificarlo 
+                        $recompenza = test_input($_POST["recompenza"]); //si si esta verificarlo 
                         
                         $stid = oci_parse($conn, 'begin :m := insertarDireccion(:a,:b,:c,:d,:e); end;'); 
                         oci_bind_by_name($stid, ':a', $pais);
@@ -85,11 +85,12 @@
                         oci_bind_by_name($stid, ':c', $canton);
                         oci_bind_by_name($stid, ':d', $distrito);
                         oci_bind_by_name($stid, ':e', $direccion);
-                        oci_bind_by_name($stid, ':m', $idDireccion);
+                        oci_bind_by_name($stid, ':m', $idDireccion,40);
                         oci_execute($stid);
                         
                         $idDir = $idDireccion;
-                        $estado = 1;
+                        
+                        $estado = 2;
                         $stid = oci_parse($conn, 'begin :j := insertarMascota(:a,:b,:c,:x,:i,:q,:d,:e,:f,:w,:g); end;'); 
                         oci_bind_by_name($stid, ':a', $idUsuario);
                         oci_bind_by_name($stid, ':b', $tipoMascota);
@@ -106,7 +107,8 @@
                         oci_execute($stid);
                         
                          if($idMascota != -1){    //si no retorna null pasar 
-                            header('Location: index.php');       
+                            header('Location: index.php');
+                             
                         }else{
                             $validacionError = "Hubo un error en el registro vuelva a registrarse";   
                         }
@@ -152,10 +154,11 @@
                          <label for="Raza"> * Raza:</label>
                         <select name = "raza" id="raza">
                             <option value="">-----</option> 
-                            
+                           
                         </select>
                         <br>
                         <span class="error"> <?php echo $razaError;?></span>
+                        
                         
                         
                         <label for="Tamaño"> *Tamaño:</label>
@@ -241,7 +244,7 @@
                         <span class="error"> <?php echo $distritoError;?></span>
                         
                         <label for="Dirección"> Dirección Exacta:</label>
-                        <textarea name = "direccion" id="dirección" placeholder="Dirección"></textarea>
+                        <textarea name = "direccion" id="direccion" placeholder="Dirección"></textarea>
                         
                         
                         <label for="FechaExtravio"> Fecha de Extravío:</label>
