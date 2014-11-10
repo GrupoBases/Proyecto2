@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+﻿ <!DOCTYPE html>
 <html lang='es'>
     <head>
         <meta charset="UTF-8"/> 
@@ -68,6 +68,7 @@
                         <input type="text" id="chip" placeholder="Chip de identificación">                        
 
                         <input type="submit" value="Filtrar">
+			<input type="submit" value="Cancelar">
                     </div>
             </form>  
         </div>
