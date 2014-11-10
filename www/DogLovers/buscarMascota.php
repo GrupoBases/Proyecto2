@@ -1,4 +1,4 @@
-﻿ <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang='es'>
     <head>
         <meta charset="UTF-8"/> 
@@ -17,10 +17,21 @@
             if (!array_key_exists('userName', $_SESSION)) {
                 header('Location: login.php');
             }
+             include 'Conexion.php';
+             include 'funcionalidad.php';
+             $conexion=new Conexion();
+             $conn=$conexion->conectar();
+            if ($_SERVER["REQUEST_METHOD"] == "POST" and ($_POST['filtrar'])) { //Si estamos recibiendo datos nuevos verificarlos
+                    echo "hola";  
+            }
+            else if ($_SERVER["REQUEST_METHOD"] == "POST" and ($_POST['cancelar'])) {
+                    header('Location: index.php');  
+        } // else if 
         ?>
         
         <div class="estructuraForm">
-            <form>      
+            <form name="buscarMascota_form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"  
+                  enctype="multipart/form-data">       
                 <div class="header">
                     <img id = "logo" src="graficos/logo1.png";
                 </div>
@@ -67,8 +78,9 @@
                         <label for="Chip"> Chip de identificación:</label>
                         <input type="text" id="chip" placeholder="Chip de identificación">                        
 
-                        <input type="submit" value="Filtrar">
-			<input type="submit" value="Cancelar">
+                        <input type="submit" name = "filtrar" value="Filtrar">
+                        
+                        <input type="submit" name = "cancelar" value="Cancelar">
                     </div>
             </form>  
         </div>

@@ -16,10 +16,22 @@
             if (!array_key_exists('userName', $_SESSION)) {
                 header('Location: login.php');
             }
+             include 'Conexion.php';
+            include 'funcionalidad.php';
+            $conexion=new Conexion();
+            $conn=$conexion->conectar();
+
+            if ($_SERVER["REQUEST_METHOD"] == "POST" and ($_POST['register'])) { //Si estamos recibiendo datos nuevos verificarlos
+                header('Location: registrarCasaCuna.php'); 
+            }
+             else if ($_SERVER["REQUEST_METHOD"] == "POST" and ($_POST['cancelar'])) {
+                    header('Location: index.php');  
+        } // else if 
         ?>
         
         <div class="estructuraForm">
-            <form>      
+             <form name="registrarCasaCuna_form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"  
+                  enctype="multipart/form-data">       
                 <div class="header">
                     <img id = "logo" src="graficos/logo1.png";
                 </div>
@@ -34,7 +46,8 @@
                         <h1 class="tagRegistrar"> ¿Quieres ser Casa Cuna? <span class="triangulo"</span></h1>
 
 
-                        <input type="submit" value="Registrar">
+                        <input type="submit" name="register" value="Registrar">
+                        <input type="submit" name="cancelar" value="Cancelar">
 
 
                     </div>

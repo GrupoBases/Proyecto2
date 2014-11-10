@@ -16,10 +16,21 @@
             if (!array_key_exists('userName', $_SESSION)) {
                 header('Location: login.php');
             }
+            include 'Conexion.php';
+        include 'funcionalidad.php';
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST" and ($_POST['register'])) {
+            echo"hola";
+        }
+          else if ($_SERVER["REQUEST_METHOD"] == "POST" and ($_POST['cancelar'])) {
+                    header('Location: index.php');  
+        } // else if 
+
         ?>
         
         <div class="estructuraForm">
-            <form>      
+            <form name="registrarMascotaEncontrada_form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"  
+                  enctype="multipart/form-data">      
                 <div class="header">
                     <img id = "logo" src="graficos/logo1.png";
                 </div>
@@ -79,8 +90,8 @@
                         <textarea id="descripciones" placeholder="Descripciones"></textarea>
 
 
-                        <input type="submit" value="Registrar">
-                        <input type="submit" value="Cancelar">  
+                        <input type="submit" name="register"value="Registrar">
+                        <input type="submit" name="cancelar"value="Cancelar">  
                     </div>
             </form>  
         </div>
