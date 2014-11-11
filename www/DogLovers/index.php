@@ -32,7 +32,7 @@
             
             <div id="header">
                 <ul class="nav">
-                    <li><a href="principal.php">Inicio</a></li>
+                    <li><a href="index.php">Inicio</a></li>
                     <li><a href="">Mascotas DogLovers</a>
                         <ul>
                             <li><a href="registrarMascotaPerdida.php">Perdí una mascota</a></li>
