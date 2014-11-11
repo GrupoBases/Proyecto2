@@ -8,9 +8,16 @@
         
         <link rel="shortcut icon" type="image/x-icon" href="graficos/favicon.ico">
         <link rel="stylesheet" type="text/css" href="css/buscarMascota.css" />
+        
+        <link rel="stylesheet" type="text/css" href="fonts.css"/> 
+	    <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="arriba.js"></script>
+        
+        
     </head>
        
     <body>
+        <span class="irArriba icon-arrow-up"></span>
         
          <?php
             session_start();    //comprobamos si el usuario ya inicio secion
@@ -36,6 +43,8 @@
                     <img id = "logo" src="graficos/logo1.png";
                 </div>
                     <div class="contenedor">   
+                        
+                        <h1 class="tagFiltros"> Filtros <span class="triangulo"</span></h1>
   
                         <label for="estados"> Estados:</label>
                         <select id="estados">

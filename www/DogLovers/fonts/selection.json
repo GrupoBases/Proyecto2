@@ -1,0 +1,156 @@
+{
+	"IcoMoonType": "selection",
+	"icons": [
+		{
+			"icon": {
+				"paths": [
+					"M192 128l640 384-640 384z"
+				],
+				"tags": [
+					"play",
+					"media control",
+					"audio"
+				],
+				"grid": 16
+			},
+			"properties": {
+				"id": 266,
+				"order": 1,
+				"prevSize": 32,
+				"code": 58880,
+				"name": "play"
+			},
+			"setIdx": 0,
+			"iconIdx": 266
+		},
+		{
+			"icon": {
+				"paths": [
+					"M128 128h320v768h-320zM576 128h320v768h-320z"
+				],
+				"tags": [
+					"pause",
+					"media control",
+					"audio"
+				],
+				"grid": 16
+			},
+			"properties": {
+				"id": 267,
+				"order": 2,
+				"prevSize": 32,
+				"code": 58881,
+				"name": "pause"
+			},
+			"setIdx": 0,
+			"iconIdx": 267
+		},
+		{
+			"icon": {
+				"paths": [
+					"M576 160v320l320-320v704l-320-320v320l-352-352z"
+				],
+				"tags": [
+					"backward",
+					"media control",
+					"audio"
+				],
+				"grid": 16
+			},
+			"properties": {
+				"id": 269,
+				"order": 3,
+				"prevSize": 32,
+				"code": 58882,
+				"name": "backward"
+			},
+			"setIdx": 0,
+			"iconIdx": 269
+		},
+		{
+			"icon": {
+				"paths": [
+					"M512 864v-320l-320 320v-704l320 320v-320l352 352z"
+				],
+				"tags": [
+					"forward",
+					"media control",
+					"audio"
+				],
+				"grid": 16
+			},
+			"properties": {
+				"id": 270,
+				"order": 4,
+				"prevSize": 32,
+				"code": 58883,
+				"name": "forward"
+			},
+			"setIdx": 0,
+			"iconIdx": 270
+		},
+		{
+			"icon": {
+				"paths": [
+					"M891.802 737.229c13.875 13.722 36.301 13.722 50.125 0 13.875-13.722 13.875-35.891 0-49.613l-404.89-400.896c-13.824-13.722-36.25-13.722-50.074 0l-404.89 400.896c-13.824 13.722-13.875 35.891 0 49.613s36.25 13.722 50.125 0l379.802-365.619 379.802 365.619z"
+				],
+				"tags": [
+					"arrow-up",
+					"up",
+					"top"
+				],
+				"grid": 20
+			},
+			"properties": {
+				"id": 215,
+				"order": 5,
+				"prevSize": 20,
+				"code": 58884,
+				"name": "arrow-up"
+			},
+			"setIdx": 3,
+			"iconIdx": 215
+		}
+	],
+	"height": 1024,
+	"metadata": {
+		"name": "icomoon"
+	},
+	"preferences": {
+		"fontPref": {
+			"prefix": "icon-",
+			"metadata": {
+				"fontFamily": "icomoon"
+			},
+			"showGlyphs": true,
+			"metrics": {
+				"emSize": 1024,
+				"baseline": 6.25,
+				"whitespace": 50
+			},
+			"resetPoint": 58880,
+			"showQuickUse": true,
+			"quickUsageToken": false,
+			"showMetrics": true,
+			"showMetadata": false
+		},
+		"imagePref": {
+			"color": 0,
+			"height": 32,
+			"columns": 16,
+			"margin": 16,
+			"png": false,
+			"sprites": true
+		},
+		"historySize": 100,
+		"showCodes": true,
+		"gridSize": 16,
+		"showLiga": false,
+		"showGrid": true,
+		"showGlyphs": true,
+		"showQuickUse": true,
+		"showQuickUse2": true,
+		"showSVGs": true,
+		"search": ""
+	}
+}
