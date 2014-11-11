@@ -38,6 +38,7 @@
                             <li><a href="registrarMascotaPerdida.php">Perdí una mascota</a></li>
                             <li><a href="registrarMascotaEncontrada.php">Encontré una mascota</a></li>
                             <li><a href="buscarMascota.php">Buscar</a></li>
+                            <li><a href="match.php">Match</a></li>
                             </li>
                         </ul>
                     </li>
