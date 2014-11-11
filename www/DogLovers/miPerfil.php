@@ -10,9 +10,17 @@
         <link rel="stylesheet" type="text/css" href="css/miPerfil.css" />
         <script src="js/jquery-2.1.1.js"></script>
         <script src="js/jquery.select.js"></script>
+        
+        <link rel="stylesheet" type="text/css" href="fonts.css" />       
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="arriba.js"></script>
+        
     </head>
        
     <body>
+        
+        <span class="irArriba icon-arrow-up"></span>
+        
          <?php
             session_start();    //comprobamos si el usuario ya inicio sesion
             if (!array_key_exists('userName', $_SESSION)) {
