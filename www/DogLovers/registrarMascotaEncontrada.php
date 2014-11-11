@@ -193,6 +193,9 @@
                         
                         <h1 class="tagMasInfo"> Más información <span class="triangulo"</span></h1>
                         
+                        <label for=""> Subir una foto:</label>
+                        <input type="file" name="image" id="image">
+                        
                         <label for="lugarPerdido"> * Lugar donde fué encontrado (a):</label>
                         <span class="error"> <?php echo $lugarError;?></span>
                         

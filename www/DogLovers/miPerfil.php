@@ -139,6 +139,9 @@
                     <div class="contenedor">            
                         
                         <span class="error"> <?php echo $validacionError;?></span>
+                        
+                        <h1 class="tagInfo"> Información del usuario <span class="triangulo"</span></h1>
+                        
                         <label for="NombreUsuario"> Nombre de usuario:</label>
                         <?php
                             $stid = oci_parse($conn, "SELECT NOMBREUSUARIO FROM TBUSUARIO where ID_USUARIO=".$_SESSION['id_user']); 
@@ -208,6 +211,11 @@
 
                         <label for="FechaNacimiento"> Fecha de Nacimiento:</label>
                         <input type="date" id="fechaNacimiento" placeholder="Fecha de nacimiento">  
+                        
+                        <h1 class="tagMasInfo"> Más Información <span class="triangulo"</span></h1>
+                        
+                        <label for=""> Subir una foto:</label>
+                        <input type="file" name="image" id="image">
                         
                         <label for="pais"> País:</label>
                             <select name="pais"  id="pais" onclick="modificarSelect('pais', 'provincia')">

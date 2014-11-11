@@ -177,6 +177,9 @@
                         
                         <h1 class="tagMasInfo"> Más Información <span class="triangulo"</span></h1>
                         
+                        <label for=""> Subir una foto:</label>
+                        <input type="file" name="image" id="image">
+                        
                         <label> * Direccion:</label>
                         
                         <label for="Pais"> Pais:</label>
