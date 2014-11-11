@@ -10,9 +10,18 @@
         <link rel="stylesheet" type="text/css" href="css/registrarUsuario.css" />
         <script src="js/jquery-2.1.1.js"></script>
         <script src="js/jquery.select.js"></script>
+        
+        <link rel="stylesheet" type="text/css" href="fonts.css" />       
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="arriba.js"></script>
+        
     </head>
        
     <body>
+        
+        
+        <span class="irArriba icon-arrow-up"></span>
+
         <?php
         include 'Conexion.php';
         include 'funcionalidad.php';
@@ -126,6 +135,7 @@
                     <img id = "logo" src="graficos/logo1.png";
                 </div>
                     <div class="contenedor">
+                        
                         <font color="white"> *Campo Obligatorio</font> 
                         
                         <h1 class="tagInfo"> Información del usuario <span class="triangulo"</span></h1>

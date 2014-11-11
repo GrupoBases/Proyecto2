@@ -151,3 +151,21 @@ Estilo del SlideShow
 	padding:13.5px 20px;
 	float:right;
 }
+
+.irArriba{
+    display: inline-block;/*para poder modificar sus margenes internos, o sea el padding*/
+    padding: 20px;
+    background: #56c2e1;
+
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+    position: fixed; /*para dejar al boton fijo en un solo lugar*/
+    bottom: 20px;
+    right: 20px;
+    border-radius: 10px;
+}
+
+.irArriba:hover { 
+    background: #3f9db8; /* animacion cambiar color boton con mouse*/
+}

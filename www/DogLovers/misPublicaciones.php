@@ -8,9 +8,16 @@
         
         <link rel="shortcut icon" type="image/x-icon" href="graficos/favicon.ico">
         <link rel="stylesheet" type="text/css" href="css/misPublicaciones.css" />
+        <link rel="stylesheet" type="text/css" href="fonts.css" />       
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="arriba.js"></script>
+
     </head>
        
     <body>
+        
+        <span class="irArriba icon-arrow-up"></span>
+        
          <?php
             session_start();    //comprobamos si el usuario ya inicio secion
             if (!array_key_exists('userName', $_SESSION)) {
@@ -38,6 +45,8 @@
                 </div>
                     <div class="contenedor">   
                         
+                        <h1 class="tagBuscar"> Buscar <span class="triangulo"</span></h1>
+                    
                         <label for="Buscar por"> Buscar Por:</label>
                         <select id="buscarPor"> 
                             <option value=""> --buscar por--</option>        

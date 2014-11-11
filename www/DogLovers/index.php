@@ -7,13 +7,17 @@
         </title>
         <link rel="shortcut icon" type="image/x-icon" href="graficos/favicon.ico">
         
-        <link rel="stylesheet" type="text/css" href="css/principal.css" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
         <link rel="stylesheet" type="text/css" href="css/fonts.css" />
-        
+
+        <link rel="stylesheet" type="text/css" href="fonts.css" />       
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="arriba.js"></script>
         
         <body> 
             
-           
+           <span class="irArriba icon-arrow-up"></span>
+
             <?php
                  //comprobamos si el usuario ya inicio secion
                 session_start();    

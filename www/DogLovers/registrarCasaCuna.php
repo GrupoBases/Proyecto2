@@ -8,9 +8,11 @@
         
         <link rel="shortcut icon" type="image/x-icon" href="graficos/favicon.ico">
         <link rel="stylesheet" type="text/css" href="css/registrarCasaCuna.css" />
+
     </head>
        
     <body>
+    
          <?php
             session_start();    //comprobamos si el usuario ya inicio secion
             if (!array_key_exists('userName', $_SESSION)) {
@@ -68,6 +70,8 @@
                     <img id = "logo" src="graficos/logo1.png";
                 </div>
                     <div class="contenedor">  
+                        
+                        <h1 class="tagInfo"> Información<span class="triangulo"</span></h1>
                         
                         <span class="error"> <?php echo $validacionError;?></span>
                         <label for="Tipo de Mascota"> Tipo de mascota:</label>

@@ -66,6 +66,9 @@
                 </div>
                 </div>
                     <div class="contenedor">   
+                        
+                        <h1 class="tagInfo"> Información de la mascota <span class="triangulo"</span></h1>
+                        
                         <br>
                         <span class="error"> <?php echo $validacionError;?></span> 
                         <label for="Asociaciones"> Elige una asociación para donar:</label>
