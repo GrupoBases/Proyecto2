@@ -30,6 +30,10 @@
         $conexion=new Conexion();
         $conn=$conexion->conectar();
 
+        $sqlEstado = "select tbmascota.nombre,tbmascota.color,tbmascota.chipidentificacion
+                        from tbmascota
+                        where tbmascota.id_estadomascota = 4 ";
+
         if ($_SERVER["REQUEST_METHOD"] == "POST" and ($_POST['register'])) {
            header('Location: registrarAdopcion.php'); 
         }
@@ -48,11 +52,26 @@
                 </div>
                     <div class="contenedor" >  
                         
-                        <h1 class="tagAdopcion"> Adopciones <span class="triangulo"</span></h1>
+                        <!--<h1 class="tagAdopcion"> Adopciones <span class="triangulo"</span></h1>-->
                         
-                        <div id="casaCuna">
-                            <label > Soy una adopcion </label>
-                        </div>
+                        
+                         <?php
+                                if (!empty($sqlEstado)) {
+                                    echo "<h1 class=\"tagAdopcion\"> En Adopción <span class=\"triangulo\"</span></h1>";
+                                $stid = oci_parse($conn, $sqlEstado); 
+                                oci_execute($stid);
+                                while(($row = oci_fetch_array($stid, OCI_BOTH))!= false) {
+                                    echo "<div id=\"adopcion\">
+                                    <p> NOMBRE:".$row['NOMBRE']."   <br>
+                                    COLOR:".$row['COLOR']."<br>
+                                    CHIP DE IDENTIFICACION: ".$row['CHIPIDENTIFICACION']."</p> <br>
+                            
+                                    </div>";
+                                    
+                                    
+                                }
+                                }
+                            ?>
                         
                         <h1 class="tagRegistrar"> Dar en adopción <span class="triangulo"</span></h1>
 
