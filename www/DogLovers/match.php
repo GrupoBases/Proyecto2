@@ -28,9 +28,24 @@
             $conexion=new Conexion();
             $conn=$conexion->conectar();
 
-            if ($_SERVER["REQUEST_METHOD"] == "POST" and ($_POST['register'])) { //Si estamos recibiendo datos nuevos verificarlos
-                header('Location: registrarCasaCuna.php'); 
+             $sqlEstado = "select p.nombre,w.estadomascota,l.nombretipomascota,d.nombre,q.estadomascota,v.nombretipomascota
+
+                            from tbmascota p,tbmatch c,tbmascota d,tbestadomascota w,tbestadomascota q,
+                            tbtipomascota l,tbtipomascota v
+
+                            where p.id_mascota = c.id_mperdida 
+                            and d.id_mascota = c.id_mencontrada
+                            and p.id_tipomascota = l.id_tipomascota 
+                            and d.id_tipomascota = v.id_tipomascota
+                            and w.id_estadomascota = p.id_estadomascota 
+                            and q.id_estadomascota = d.id_estadomascota";
+
+            if ($_SERVER["REQUEST_METHOD"] == "POST" and ($_POST['match'])) { //Si estamos recibiendo datos nuevos verificarlos
+                 $stid = oci_parse($conn, 'begin realizarmatch(); end;'); 
+                        oci_execute($stid);
+                header('Location: match.php'); 
             }
+
              else if ($_SERVER["REQUEST_METHOD"] == "POST" and ($_POST['cancelar'])) {
                     header('Location: index.php');  
         } // else if 
@@ -44,19 +59,39 @@
                 </div>
                     <div class="contenedor" >  
                         
-                        <h1 class="tagRegistrar"> Realizar Match <span class="triangulo"</span></h1>
+                        <!--<h1 class="tagRegistrar"> Realizar Match <span class="triangulo"</span></h1>-->
                         
                                                 
-                        <label for="frecuecia"> Frecuencia:</label>
-                        <input name="frecuencia" type="text" id="frecuencia" placeholder="Frecuencia para el match">
+                       <!-- <label for="frecuecia"> Frecuencia:</label>
+                        <input name="frecuencia" type="text" id="frecuencia" placeholder="Frecuencia para el match">-->
 
                         
                         <input type="submit" name="match" value="Match">
                         
-                        <div id="casaCuna">
-                            <label > Soy un match </label>
-                        </div>
                         
+                         <?php
+                                if (!empty($sqlEstado)) {
+                                    echo "<h1 class=\"tagRegistrar\"> Realizar Match <span class=\"triangulo\"</span></h1>";
+                                $stid = oci_parse($conn, $sqlEstado); 
+                                oci_execute($stid);
+                                    $var=0;
+                                while(($row = oci_fetch_array($stid, OCI_BOTH))!= false) {
+                                    
+                                    echo "<div class=\"casaCuna\">
+                                    <p> NOMBRE MASCOTA:".$row[$var]."   <br>
+                                    ESTADO DE LA MASCOTA:".$row[$var+=1]."<br>
+                                    TIPO DE MASCOTA: ".$row[$var+=1]." <br>
+                                    NOMBRE MASCOTA:".$row[$var+=1]."   <br>
+                                    ESTADO DE LA MASCOTA:".$row[$var+=1]."<br>
+                                    TIPO DE MASCOTA: ".$row[$var+=1]."</p> <br>
+                                    
+                            
+                                    </div>";
+                                    $var=0;
+                                    
+                                }
+                                }
+                        ?>
 
                         <input type="submit" name="cancelar" value="Cancelar">
 
